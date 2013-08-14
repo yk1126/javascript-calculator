@@ -1,0 +1,29 @@
+.num-box {
+    margin : 5px 0 0 5px;
+}
+
+.button-equals {
+    width : 200px; 
+    text-align : center;
+    margin-top : 20px;
+}
+
+.result-box {
+    margin-top : 20px;
+}
+
+.calculator {
+    margin-top : 5%;
+}
+
+.operator {
+    width : 50px;
+}
+
+.button-group {
+    margin-left : 60px;
+}
+
+.clear-button {
+	width : 345px;
+}

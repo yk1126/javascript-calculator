@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <title>Javascript Calculator</title>
+    <meta name="viewport" content="width=device-width,
+                                   initial-scale=1.0">
+    <script type="text/javascript" src="src/calculator.js"></script>
+    <!-- Bootstrap -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"
+          media="screen">
+    <link href="calc.css" rel="stylesheet" media="screen">
+  </head>
+  
+  <body>
+    <div class="container calculator">
+      <div class="row num-box">
+        <div class="col-lg-4">
+          <input type="text" class="form-control" id="number1"
+                 placeholder="Number 1" onblur="validateNumber('number1')">
+        </div>
+      </div>
+      
+      <div class="row num-box">
+        <div class="col-lg-4">
+          <input type="text" class="form-control" id="operator" placeholder="Operator">
+        </div>
+      </div>
+
+      <div class="row num-box">
+        <div class="col-lg-4">
+          <input type="text" class="form-control" id="number2" placeholder="Number 2">
+        </div>
+      </div>
+      
+      <div class="row num-box pagination-centered">
+        <div class="col-lg-4">
+          <button type="button" class="btn btn-info clear-button num-box pagination-centered"
+                  onclick="equals()"> Submit </button>
+        </div>
+       </div>
+      
+      <div class="row num-box result-box">
+        <div class="col-lg-4">
+          <input type="text" class="form-control" id="result" placeholder="Result">
+        </div>
+      </div>
+      
+    </div>
+    
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    
+    <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+    <script src="bootstrap/js/respond.js"></script>
+  </body>
+
+</html>
