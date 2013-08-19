@@ -10,7 +10,7 @@ function equals() {
     
     try {
         var operator = returnOperator(document.getElementById("operator").value);    
-    } catch (x) {
+    } catch(x) {
         alert("Invalid Operator!");
         return;
     }
