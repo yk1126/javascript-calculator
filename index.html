@@ -17,29 +17,26 @@
       <div class="row num-box">
         <div class="col-lg-4">
           <input type="text" class="form-control" id="number1"
-                 placeholder="Number 1" onblur="validateNumber('number1')">
+                 placeholder="Number 1" oninput="validateField(this)">
         </div>
       </div>
       
       <div class="row num-box">
         <div class="col-lg-4">
-          <input type="text" class="form-control" id="operator" placeholder="Operator">
+          <input type="text" class="form-control" id="operator"
+                 placeholder="Operator" oninput="validateField(this)">
         </div>
       </div>
 
       <div class="row num-box">
         <div class="col-lg-4">
-          <input type="text" class="form-control" id="number2" placeholder="Number 2">
+          <input type="text" class="form-control" id="number2"
+                 placeholder="Number 2" oninput="validateField(this)">
         </div>
       </div>
-      
-      <div class="row num-box pagination-centered">
-        <div class="col-lg-4">
-          <button type="button" class="btn btn-info clear-button num-box pagination-centered"
-                  onclick="equals()"> Submit </button>
-        </div>
-       </div>
-      
+     
+      <br/>
+ 
       <div class="row num-box result-box">
         <div class="col-lg-4">
           <input type="text" class="form-control" id="result" placeholder="Result">

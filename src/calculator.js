@@ -1,40 +1,62 @@
-function equals() {
-    try {
-        var number1 = returnFloat(document.getElementById("number1").value);
-        var number2 = returnFloat(document.getElementById("number2").value);
-    } 
-    catch (x) {
-        alert("Invalid Number!");
-        return;
-    }    
-    
-    try {
-        var operator = returnOperator(document.getElementById("operator").value);    
-    } catch(x) {
-        alert("Invalid Operator!");
-        return;
+var expression = { 
+    number1 : null, 
+    number2 : null, 
+    operator : null, 
+    allFilled : function() { 
+        if(this.number1 != null && this.number2 != null && this.operator != null) 
+            return true;
+        else 
+            return false; 
+    },
+    getResult : function() {
+        return eval(this.number1 + this.operator + this.number2);
     }
-    
+};
 
-    var result = calculateResult(number1, number2, operator);
-    document.getElementById("result").value = result;
+function validateField(field) {
+    if(field.id == "operator") {
+        try {
+            expression.operator = getOperator(field.value); 
+   
+        } catch(x) {
+            expression.operator = null;
+            showError(field);
+        }
+    }
+    else
+    {
+        var inputValue = field.value;
+        try {
+            eval("expression." + field.id + " = getNumber(inputValue);");
+           
+        } catch (x) {
+            eval("expression." + field.id + " = null;");
+            showError(field);
+        }
+    }
 
+    if(expression.allFilled()) {
+        document.getElementById("result").value = expression.getResult();
+    }
 }
 
-function calculateResult(number1, number2, operator) {
-    return eval(number1 + operator + number2);
+function showError(field) {
+    if(field.value != "")
+        document.getElementById("result").value = "Error";
+    else
+        document.getElementById("result").value = "";
 }
 
-function returnFloat(stringNum)
+function getNumber(userInputValue)
 {
-    var intNum = parseFloat(stringNum);
-    if(stringNum == String(intNum))
-        return intNum;
+    var number = parseFloat(userInputValue);
+    if(userInputValue == String(number))
+        return number;
     else
         throw new Error;
 }
 
-function returnOperator(operator) {
+function getOperator(operator) {
     regex = /^[\+-\/\*]$/;
     if(regex.test(operator))
         return operator;

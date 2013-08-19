@@ -1,65 +1,105 @@
-describe("Calculator", function() {
-             describe("calculateResult function", function() {
-                          it("should return sum of two numbers when '+' is passed as operator", function() {
-                                 expect(calculateResult(3, 2, '+')).toEqual(5);
+
+describe("Javascript expression", function() {
+             describe("expression object", function() {
+                          it("should have member variables number1, number2 and operator", function() {
+                                 expect(expression.number1).toBeDefined();
+                                 expect(expression.number2).toBeDefined();
+                                 expect(expression.operator).toBeDefined();
                              }
                           );
-                          it("should return difference of two numbers when '-' is passed as operator", function() {
-                                 expect(calculateResult(3, 2, '-')).toEqual(1);
+                          it("should have member functions allFilled() and getResult()", function() {
+                                 expect(expression.allFilled).toBeDefined();
+                                 expect(expression.getResult).toBeDefined();
                              }
-                          );
-                          it("should return product of two numbers when '*' is passed as operator", function() {
-                                 expect(calculateResult(2, 3, '*')).toEqual(6);
-                             }
-                          );
-                          it("should return quotient of two numbers when '/' is passed as operator", function() {
-                                 expect(calculateResult(6, 2, '/')).toEqual(3);
-                             }
-                          );
+                            );
+                          describe("expression.allFilled function", function() {
+                                       beforeEach(function() {
+                                                      expression.number1 = 6;
+                                                      expression.number2 = 3;
+                                                  }
+                                                 );
+                                       it("should return false if some member value is missing", function() {
+                                              expect(expression.allFilled()).toBeFalsy;
+                                          }
+                                         );
+                                       it("should return true if all member values are present", function() {
+                                              expression.operator = "+";
+                                              expect(expression.allFilled()).toBeTruthy;
+                                          }
+                                         );
+                                   }
+                                  );
+                          describe("expression.getResult function", function() {
+                                       beforeEach(function() {
+                                                      expression.number1 = 6;
+                                                      expression.number2 = 3;
+                                                  }
+                                                 );
+                                       it("should give sum of two numbers when '+' is passed as operator", function() {
+                                              expression.operator = "+";
+                                              expect(expression.getResult()).toEqual(9);
+                                          }
+                                         );
+                                       it("should give difference of two numbers when '-' is passed as operator", function() {
+                                              expression.operator = "-";
+                                              expect(expression.getResult()).toEqual(3);
+                                          }
+                                         );
+                                       it("should give product of two numbers when '*' is passed as operator", function() {
+                                              expression.operator = "*";
+                                              expect(expression.getResult()).toEqual(18);
+                                          }
+                                         );
+                                       it("should give quotient of two numbers when '/' is passed as operator", function() {
+                                              expression.operator = "/";
+                                              expect(expression.getResult()).toEqual(2);
+                                          }
+                                         );
+                                   }
+                                  );
                       }
                      );
-             describe("returnFloat function", function() {
-                          it("should return float value when string is passed", function() {
-                                 expect(returnFloat("5")).toEqual(5);
+             describe("getNumber function", function() {
+                          it("should return valid number (argument) when string is passed", function() {
+                                 expect(getNumber("5")).toEqual(5);
                              }
                           );
-                          it("should throw error when an invalid input is given", function() {
+                          it("should throw error when an invalid number is given as argument", function() {
                                  test = function() {
-                                     returnFloat("abc");
+                                     getNumber("abc");
                                  }
                                  expect(test).toThrow();
                              }
                             );
                           it("should throw error when no input is given", function() {
                                  test = function() {
-                                     returnFloat();
+                                     getNumber();
                                  }
                                  expect(test).toThrow();
                              }
                             );
                       }
                      );
-             describe("returnOperator function", function() {
-                          it("should return operator value when string is passed", function() {
-                                 expect(returnOperator("+")).toEqual("+");
+             describe("getOperator function", function() {
+                          it("should give back the operator when string is passed as an argument", function() {
+                                 expect(getOperator("+")).toEqual("+");
                              }
                             );
-                          it("should throw error when an invalid input is given", function() {
+                          it("should throw error when an invalid operator is given as an argument", function() {
                                  test = function() {
-                                     returnOperator("/a");
+                                     getOperator("/a");
                                  }
                                  expect(test).toThrow();
                              }
                             );
                           it("should throw error when no input is given", function() {
                                  test = function() {
-                                     returnOperator();
+                                     getOperator();
                                  }
                                  expect(test).toThrow();
                              }
                             );
                       }
                      );
-             
          }
 );
